@@ -29,7 +29,7 @@ exports.bowerRJS = {
 
 		test.done();
 	},
-	wireupComponenPrefixConfig: function (test) {
+	wireupComponentPrefixConfig: function (test) {
 		test.expect(1);
 
 		var actual = grunt.file.read('tmp/prefix.js');
