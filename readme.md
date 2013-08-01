@@ -1,6 +1,6 @@
-# grunt-bower-requirejs [![Build Status](https://secure.travis-ci.org/yeoman/grunt-bower-requirejs.png?branch=master)](http://travis-ci.org/yeoman/grunt-bower-requirejs)
+# grunt-bower-requirejs-alias
 
-Automagically wire-up installed Bower components into your RequireJS config
+Automagically wire-up installed Bower components into your RequireJS config, with the ability to alias and prefix module IDs.
 
 
 ## Getting Started
@@ -8,13 +8,13 @@ Automagically wire-up installed Bower components into your RequireJS config
 If you haven't used [grunt][] before, be sure to check out the [Getting Started][] guide, as it explains how to create a [gruntfile][Getting Started] as well as install and use grunt plugins. Once you're familiar with that process, install this plugin with this command:
 
 ```shell
-npm install grunt-bower-requirejs --save-dev
+npm install grunt-bower-requirejs-alias --save-dev
 ```
 
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
-grunt.loadNpmTasks('grunt-bower-requirejs');
+grunt.loadNpmTasks('grunt-bower-requirejs-alias');
 ```
 
 [grunt]: http://gruntjs.com
@@ -47,7 +47,7 @@ You trigger this task from another task in your Gruntfile or through the CLI: `g
 
 ### rjsConfig
 
-**Required**  
+**Required**
 Type: `String`
 
 Specify a relative path to your RequireJS config.
@@ -59,17 +59,31 @@ Make sure to specify the `baseUrl` property in your RequireJS config if you want
 
 #### exclude
 
-Default: `[]`  
+Default: `[]`
 Type: `Array`
 
 Specify components to be excluded from being added to the RequireJS config.
 
 #### baseUrl
 
-Default: `null`  
+Default: `null`
 Type: `String`
 
 Generate paths relative to a specific directory. This option is for anyone **not** using `data-main` who wishes to set their own base.
+
+### prefix
+
+Prefix all bower module ids with a specific string
+
+Default: `undefined`
+Type: `String`
+
+### aliases
+
+Alias one module name to another. Applied before prefix.
+
+Default: `{}`
+Type: `Object`
 
 
 ## Things to remember

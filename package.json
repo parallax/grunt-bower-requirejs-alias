@@ -1,5 +1,5 @@
 {
-  "name": "grunt-bower-requirejs",
+  "name": "grunt-bower-requirejs-alias",
   "version": "0.6.0",
   "description": "Automagically wire-up installed Bower components into your RequireJS config",
   "keywords": [
@@ -9,24 +9,17 @@
     "rjs",
     "config"
   ],
-  "homepage": "https://github.com/yeoman/grunt-bower-requirejs",
-  "bugs": "https://github.com/yeoman/grunt-bower-requirejs/issues",
+  "homepage": "https://github.com/snapshotmedia/grunt-bower-requirejs-alias",
+  "bugs": "https://github.com/snapshotmedia/grunt-bower-requirejs-alias/issues",
   "author": {
-    "name": "Sindre Sorhus",
-    "email": "sindresorhus@gmail.com",
-    "url": "http://sindresorhus.com"
+    "name": "Parallax",
+    "email": "team@parall.ax",
+    "url": "http://parall.ax"
   },
-  "contributors": [
-    {
-      "name": "Merrick Christensen",
-      "email": "merrick.christensen@gmail.com",
-      "url": "http://merrickchristensen.com"
-    }
-  ],
   "main": "Gruntfile.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/yeoman/grunt-bower-requirejs.git"
+    "url": "git://github.com/snapshotmedia/grunt-bower-requirejs-alias.git"
   },
   "scripts": {
     "test": "grunt test"
@@ -57,6 +50,6 @@
     }
   ],
   "files": [
-    "tasks/bower-requirejs.js"
+    "tasks/bower-requirejs-alias.js"
   ]
 }
