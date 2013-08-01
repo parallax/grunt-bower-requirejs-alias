@@ -16,6 +16,8 @@ module.exports = function (grunt) {
 		var baseUrl = this.options({ baseUrl: configDir }).baseUrl;
 		var filePath = this.data.rjsConfig;
 		var file = grunt.file.read(filePath);
+		var aliases = this.data.aliases;
+		var prefix = this.data.prefix;
 
 		// remove extensions from js files but ignore folders
 		function stripJS(val) {
@@ -32,6 +34,7 @@ module.exports = function (grunt) {
 		require('bower').commands.list({paths: true})
 			.on('data', function (data) {
 				var rjsConfig;
+				var real_data;
 
 				if (data) {
 					// remove excludes and clean up key names
@@ -79,6 +82,28 @@ module.exports = function (grunt) {
 						}
 					});
 
+					// Apply aliases
+					if (typeof aliases === 'object') {
+						real_data = {};
+						_.forOwn(data, function(val, key) {
+							if (key in aliases) {
+								key = aliases[key];
+							}
+
+							real_data[key] = val;
+						});
+						data = real_data;
+					}
+
+					// Apply prefix
+					if (typeof prefix === 'string') {
+						real_data = {};
+						_.forOwn(data, function(val, key) {
+							real_data[prefix + key] = val;
+						});
+						data = real_data;
+					}
+
 					requirejs.tools.useLib(function (require) {
 						rjsConfig = require('transform').modifyConfig(file, function (config) {
 							_.forOwn(data, function(val, key, obj) {
@@ -113,7 +138,13 @@ module.exports = function (grunt) {
 									delete obj[key];
 									_.forEach(jsfiles, function (jsfile) {
 										var jspath = path.relative(baseUrl, jsfile);
-										obj[path.basename(jspath).split('.')[0]] = normalizePath(jspath);
+										var new_key = path.basename(jspath).split('.')[0];
+
+										if (prefix) {
+											new_key = prefix + new_key;
+										}
+
+										obj[new_key] = normalizePath(jspath);
 									});
 								// if there was only one js file create a path
 								// using the key

@@ -46,6 +46,17 @@ module.exports = function (grunt) {
 					baseUrl: './'
 				},
 				rjsConfig: 'tmp/baseurl.js'
+			},
+			prefix: {
+				prefix: 'lib/',
+				rjsConfig: 'tmp/prefix.js'
+			},
+			aliases: {
+				rjsConfig: 'tmp/aliases.js',
+				aliases: {
+					'json2': 'json2-alias',
+					'jquery': 'jquery-alias'
+				}
 			}
 		}
 	});
