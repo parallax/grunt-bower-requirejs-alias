@@ -28,5 +28,14 @@ exports.bowerRJS = {
 		test.equal(actual, expected, 'should wireup Bower components relative to baseUrl');
 
 		test.done();
+	},
+	wireupComponenPrefixConfig: function (test) {
+		test.expect(1);
+
+		var actual = grunt.file.read('tmp/prefix.js');
+		var expected = grunt.file.read('test/fixtures/prefix-expected.js');
+		test.equal(actual, expected, 'should wireup Bower components using prefixes for names');
+
+		test.done();
 	}
 };

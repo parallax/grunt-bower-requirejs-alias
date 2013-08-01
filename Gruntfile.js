@@ -46,6 +46,10 @@ module.exports = function (grunt) {
 					baseUrl: './'
 				},
 				rjsConfig: 'tmp/baseurl.js'
+			},
+			prefix: {
+				prefix: 'lib/',
+				rjsConfig: 'tmp/prefix.js'
 			}
 		}
 	});
