@@ -37,5 +37,14 @@ exports.bowerRJS = {
 		test.equal(actual, expected, 'should wireup Bower components using prefixes for names');
 
 		test.done();
+	},
+	wireupComponentAliasesConfig: function (test) {
+		test.expect(1);
+
+		var actual = grunt.file.read('tmp/aliases.js');
+		var expected = grunt.file.read('test/fixtures/aliases-expected.js');
+		test.equal(actual, expected, 'should wireup Bower components using aliases');
+
+		test.done();
 	}
 };

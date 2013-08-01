@@ -50,6 +50,13 @@ module.exports = function (grunt) {
 			prefix: {
 				prefix: 'lib/',
 				rjsConfig: 'tmp/prefix.js'
+			},
+			aliases: {
+				rjsConfig: 'tmp/aliases.js',
+				aliases: {
+					'json2': 'json2-alias',
+					'jquery': 'jquery-alias'
+				}
 			}
 		}
 	});
