@@ -16,6 +16,7 @@ module.exports = function (grunt) {
 		var baseUrl = this.options({ baseUrl: configDir }).baseUrl;
 		var filePath = this.data.rjsConfig;
 		var file = grunt.file.read(filePath);
+		var aliases = this.data.aliases;
 		var prefix = this.data.prefix;
 
 		// remove extensions from js files but ignore folders
@@ -81,6 +82,18 @@ module.exports = function (grunt) {
 						}
 					});
 
+					// Apply aliases
+					if (typeof aliases === 'object') {
+						real_data = {};
+						_.forOwn(data, function(val, key) {
+							if (key in aliases) {
+								key = aliases[key];
+							}
+
+							real_data[key] = val;
+						});
+						data = real_data;
+					}
 
 					// Apply prefix
 					if (typeof prefix === 'string') {
